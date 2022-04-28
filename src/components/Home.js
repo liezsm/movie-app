@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 // config
 
@@ -15,6 +15,7 @@ import { useHomeFetch } from "../hooks/useHomeFetch";
 import NoImage from "../images/no_image.jpg";
 import Movies from "./MoviesTiles";
 import MovieItem from "./MovieItem";
+import Spinner from "./Spinner";
 
 const Home = () => {
   const { state, loading, error } = useHomeFetch();
@@ -29,7 +30,7 @@ const Home = () => {
           text={state.results[0].overview}
         />
       ) : null}
-
+      <Spinner />
       <Movies header='Popular Movies'>
         {state.results.map((movie) => (
           <MovieItem

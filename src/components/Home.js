@@ -13,6 +13,8 @@ import { useHomeFetch } from "../hooks/useHomeFetch";
 
 // image
 import NoImage from "../images/no_image.jpg";
+import Movies from "./MoviesTiles";
+import MovieItem from "./MovieItem";
 
 const Home = () => {
   const { state, loading, error } = useHomeFetch();
@@ -27,6 +29,21 @@ const Home = () => {
           text={state.results[0].overview}
         />
       ) : null}
+
+      <Movies header='Popular Movies'>
+        {state.results.map((movie) => (
+          <MovieItem
+            key={movie.id}
+            // exp if naay image i display, kun wala, kato no item found
+            image={
+              movie.poster_path
+                ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                : NoImage
+            }
+            clickable={true}
+          />
+        ))}
+      </Movies>
     </>
   );
 };

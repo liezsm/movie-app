@@ -11,12 +11,13 @@ const inititalState = {
   total_results: 0,
 };
 
-export const useHomeFetch = (url) => {
+export const useHomeFetch = () => {
   // initial
   const [state, setState] = useState(inititalState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   console.log(searchTerm);
 
@@ -38,10 +39,21 @@ export const useHomeFetch = (url) => {
     setLoading(false);
   };
   // only run firt component mount, will run once use empty array
-  // exp initial render
-  useEffect(() => {
-    fetchMovies();
-  }, []);
 
-  return { state, loading, error, setSearchTerm };
+  // exp initial render and search
+  useEffect(() => {
+    setState(inititalState); // i erase sa ang sulod daan para mapulihan ang data base sa gsearch then mao na madisplay
+    fetchMovies(1, searchTerm);
+  }, [searchTerm]);
+
+  //exp is load more effect
+
+  useEffect(() => {
+    if (!isLoadingMore) return;
+
+    fetchMovies(state.page + 1, searchTerm);
+    setIsLoadingMore(false);
+  }, [isLoadingMore, state.page, searchTerm]);
+
+  return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore };
 };

@@ -51,6 +51,7 @@ const Home = () => {
                 : NoImage
             }
             clickable={true}
+            movieId={movie.id}
           />
         ))}
       </Movies>

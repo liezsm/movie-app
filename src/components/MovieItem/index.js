@@ -6,19 +6,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Image } from "./MovieItem.styles";
 
-const MovieItem = ({ image, movieId, clickable }) => {
-  return;
-  {
-    clickable ? (
+const MovieItem = ({ image, movieId, clickable }) => (
+  <div>
+    {clickable ? (
       <Link to={`/${movieId}`}>
-        <div>
-          <Image src={image} alt='movie-thumb' />
-        </div>
+        <Image src={image} alt='movie-thumb' />
       </Link>
     ) : (
       <Image src={image} alt='movie-thumb' />
-    );
-  }
-};
+    )}
+  </div>
+);
 
 export default MovieItem;

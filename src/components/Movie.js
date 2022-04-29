@@ -10,6 +10,7 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from "../config";
 // compnents
 import Spinner from "./Spinner";
 import MovieBreadCrumb from "./BreadCrumb";
+import MovieInfo from "./Movie_Info";
 
 // image
 
@@ -30,10 +31,12 @@ const Movie = () => {
   // exp if theres an error
   if (error) return <div> Something went wrong...</div>;
 
+  console.log("movie", movie.director.length);
   return (
     <>
       <div className='movie_detail'>
         <MovieBreadCrumb movieTitle={movie.original_title} />
+        <MovieInfo movie={movie} />
       </div>
     </>
   );

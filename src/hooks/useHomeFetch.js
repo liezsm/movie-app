@@ -53,7 +53,6 @@ export const useHomeFetch = () => {
 
       if (localData) {
         setState(localData);
-        return;
       }
     }
 

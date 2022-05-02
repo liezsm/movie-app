@@ -49,7 +49,6 @@ export const useMovieFetch = (movieID) => {
     if (localData) {
       setState(localData);
       setLoading(false);
-      return;
     }
     fetch();
   }, [movieID, fetch]);

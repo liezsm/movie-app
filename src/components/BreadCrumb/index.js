@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 // styles
 import { Wrapper, Content } from "./BreadCrumb.styles";
 
+// props types
+
+import PropTypes from "prop-types";
+
 const MovieBreadCrumb = ({ movieTitle }) => {
   return (
     <Wrapper>
@@ -16,6 +20,10 @@ const MovieBreadCrumb = ({ movieTitle }) => {
       </Content>
     </Wrapper>
   );
+};
+
+MovieBreadCrumb.propTypes = {
+  movieTitle: PropTypes.string,
 };
 
 export default MovieBreadCrumb;

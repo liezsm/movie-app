@@ -2,6 +2,10 @@ import React from "react";
 
 import { Wrapper, Content, Text } from "./Hero.styles";
 
+// proptyeps
+
+import PropTypes from "prop-types";
+
 const Hero = ({ image, title, text }) => (
   <Wrapper image={image}>
     <Content>
@@ -12,5 +16,11 @@ const Hero = ({ image, title, text }) => (
     </Content>
   </Wrapper>
 );
+
+Hero.propTypes = {
+  image: PropTypes.string,
+  title: PropTypes.string,
+  text: PropTypes.string,
+};
 
 export default Hero;

@@ -13,3 +13,11 @@ export const convertMoney = (money) => {
   });
   return formatter.format(money);
 };
+
+// local storage
+
+export const isPersistedState = (stateName) => {
+  const localState = localStorage.getItem(stateName);
+  // exp if there is data in the local storage, then return it
+  return localState && JSON.parse(localState);
+};
